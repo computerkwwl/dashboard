@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.openurp.edu.clazz.dashboard</groupId>
+    <artifactId>openurp-edu-clazz-dashboard-edu</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>org.openurp.edu.clazz.dashboard.edu</groupId>
+  <artifactId>openurp-edu-clazz-dashboard-edu-clazz</artifactId>
+  <packaging>jar</packaging>
+  <name>OpenURP Edu Clazz Dashboard - Edu - Clazz</name>
+
+  <properties>
+    <bundle.namespace>org.openurp</bundle.namespace>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.beangle.ems</groupId>
+      <artifactId>beangle-ems-app_2.13</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+    </dependency>
+  </dependencies>
+</project>
