@@ -23,6 +23,6 @@ import org.beangle.cdi.bind.BindModule
 class ClazzDefaultModule extends BindModule {
 
   override protected def binding(): Unit = {
-    bind(classOf[DashboardSemesterAction], classOf[DashboardDepartmentAction], classOf[DashboardCourseTypeAction], classOf[DashboardEnrollmentAction], classOf[DashboardElectionModeAction], classOf[DashboardTeacherAction])
+    bind(classOf[DashboardSemesterAction], classOf[DashboardDepartmentAction], classOf[DashboardCourseTypeAction], classOf[DashboardEnrollmentAction], classOf[DashboardElectionModeAction], classOf[DashboardTakeTypeAction], classOf[DashboardTeacherAction])
   }
 }

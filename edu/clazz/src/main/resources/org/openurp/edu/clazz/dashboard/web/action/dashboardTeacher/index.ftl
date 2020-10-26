@@ -1,7 +1,7 @@
 <div class="container" style="display:flex;justify-content:space-around;flex-wrap:wrap; width: 50%;float:left">
   [@b.card style="width:100%" class="card-info card-primary card-outline"]
     [@b.card_header]
-      <h3 style="float: left">授课老师的职称分布</h3>
+      <h3 style="float: left">[#if semester?exists]<span class="badge badge-primary" style="margin-left: 3px; margin-right: 3px">${semester.schoolYear}</span>学年度<span class="badge badge-primary" style="margin-left: 3px; margin-right: 3px">${semester.name}</span>学期[/#if]授课老师的职称分布</h3>
       <span style="position: relative;top: 13px;margin-left: 3px;margin-right: 3px;">总共<span class="badge badge-primary" style="margin-left: 3px; margin-right: 3px">${sum?first}</span>人</span>
     [/@]
     [@b.card_body]

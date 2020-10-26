@@ -18,12 +18,25 @@
  */
 package org.openurp.edu.clazz.dashboard.web.action
 
-import org.beangle.webmvc.api.action.ActionSupport
 import org.beangle.webmvc.api.view.View
+import org.openurp.edu.base.model.{Semester, Teacher}
 
-class ClazzAction extends ActionSupport {
+class ClazzAction extends ProjectRestfulAction[Teacher] {
 
-  def index: View = {
+  override def indexSetting(): Unit = {
+    put("project", getProject)
+    put("currentSemester", getCurrentSemester)
+    forward()
+  }
+
+  def display(): View = {
+    val semesterId = getInt("semester.id")
+    semesterId match {
+      case Some(value) => {
+        put("semester", entityDao.get(classOf[Semester], value))
+      }
+      case None        =>
+    }
     forward()
   }
 }

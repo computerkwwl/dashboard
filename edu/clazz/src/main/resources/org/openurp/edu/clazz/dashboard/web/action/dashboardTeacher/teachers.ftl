@@ -1,7 +1,7 @@
 <div class="container" style="display:flex;justify-content:space-around;flex-wrap:wrap; width: 50%;float:left">
   [@b.card style="width:100%" class="card-info card-primary card-outline"]
     [@b.card_header]
-      <h3>各个教师职称开课门次数最多的前${Parameters.title}位</h3>
+      <h3>[#if semester?exists]<span class="badge badge-primary" style="margin-left: 3px; margin-right: 3px">${semester.schoolYear}</span>学年度<span class="badge badge-primary" style="margin-left: 3px; margin-right: 3px">${semester.name}</span>学期[/#if]各个教师职称开课门次数最多的前${Parameters.title}位</h3>
     [/@]
     [@b.card_body]
       [#assign index = 0/]

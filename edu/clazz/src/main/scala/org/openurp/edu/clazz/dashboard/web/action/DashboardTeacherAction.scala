@@ -4,7 +4,7 @@ import org.beangle.data.dao.OqlBuilder
 import org.beangle.webmvc.api.view.View
 import org.beangle.webmvc.entity.action.RestfulAction
 import org.openurp.code.job.model.ProfessionalTitle
-import org.openurp.edu.base.model.Teacher
+import org.openurp.edu.base.model.{Semester, Teacher}
 import org.openurp.edu.clazz.model.Clazz
 import org.openurp.edu.web.ProjectSupport
 
@@ -14,7 +14,15 @@ class DashboardTeacherAction extends RestfulAction[Teacher] with ProjectSupport 
 
   override def indexSetting(): Unit = {
     val query = OqlBuilder.from(classOf[Teacher].getName, "t")
-    query.where(s"exists (from ${classOf[Clazz].getName} c where exists (from c.teachers ct where ct = t))")
+    val semesterId = getInt("semester.id")
+    semesterId match {
+      case Some(value) => {
+        val semester = entityDao.get(classOf[Semester], value)
+        query.where(s"exists (from ${classOf[Clazz].getName} c where c.semester = :semester and exists (from c.teachers ct where ct = t))", semester)
+        put("semester", semester)
+      }
+      case None        => query.where(s"exists (from ${classOf[Clazz].getName} c where exists (from c.teachers ct where ct = t))")
+    }
     query.where("t.title is not null")
     query.select("count(*)")
     put("sum", entityDao.search(query))
@@ -27,6 +35,15 @@ class DashboardTeacherAction extends RestfulAction[Teacher] with ProjectSupport 
   def items(): View = {
     val itemData = get("items").get.replace("clazz", "c").replace("course", "c.course")
     val query = OqlBuilder.from(classOf[Clazz].getName, "c")
+    val semesterId = getInt("semester.id")
+    semesterId match {
+      case Some(value) => {
+        val semester = entityDao.get(classOf[Semester], value)
+        query.where("c.semester = :semester", semester)
+        put("semester", semester)
+      }
+      case None        =>
+    }
     query.join("c.teachers", "t")
     query.groupBy("t.title.id, t.title.name")
     query.orderBy("t.title.name")
@@ -49,6 +66,15 @@ class DashboardTeacherAction extends RestfulAction[Teacher] with ProjectSupport 
     itemData(1) = s"t.user.${itemData(1)}"
     itemData(2) = s"t.user.${itemData(2)}"
     val query2 = OqlBuilder.from(classOf[Clazz].getName, "c")
+    val semesterId = getInt("semester.id")
+    semesterId match {
+      case Some(value) => {
+        val semester = entityDao.get(classOf[Semester], value)
+        query2.where("c.semester = :semester", semester)
+        put("semester", semester)
+      }
+      case None        =>
+    }
     query2.join("c.teachers", "t")
     query2.groupBy("t.title.id, t.title.name, t.id, t.user.name, t.user.department.id, t.user.department.name")
     query2.orderBy("t.title.name, count(*) desc")

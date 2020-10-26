@@ -27,6 +27,11 @@ class DashboardSemesterAction extends RestfulAction[Clazz] with ProjectSupport {
 
   override def indexSetting(): Unit = {
     val query = OqlBuilder.from(classOf[Clazz].getName, "c")
+    val semesterId = getInt("semester.id")
+    semesterId match {
+      case Some(value) => query.where("c.semester.id = :semesterId", value)
+      case None        =>
+    }
     query.groupBy("c.semester.id,c.semester.schoolYear,c.semester.name")
     query.orderBy("c.semester.schoolYear desc,c.semester.name desc")
     query.select("c.semester.schoolYear,c.semester.name,count(*),count(distinct c.course.id)")
