@@ -1,0 +1,1 @@
+<span>其中，最大教学班人数<span class="badge badge-primary" style="margin-left: 3px; margin-right: 3px">${items?first[0]}</span>，最小教学班人数<span class="badge badge-primary" style="margin-left: 3px; margin-right: 3px">${items?first[1]}</span>。</span>

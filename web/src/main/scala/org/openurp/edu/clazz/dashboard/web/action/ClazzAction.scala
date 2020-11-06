@@ -19,14 +19,14 @@
 package org.openurp.edu.clazz.dashboard.web.action
 
 import org.beangle.webmvc.api.view.View
-import org.openurp.edu.base.model.{Semester, Teacher}
+import org.openurp.edu.base.model.Semester
+import org.openurp.edu.clazz.model.Clazz
 
-class ClazzAction extends ProjectRestfulAction[Teacher] {
+class ClazzAction extends ProjectRestfulAction[Clazz] {
 
   override def indexSetting(): Unit = {
     put("project", getProject)
     put("currentSemester", getCurrentSemester)
-    forward()
   }
 
   def display(): View = {

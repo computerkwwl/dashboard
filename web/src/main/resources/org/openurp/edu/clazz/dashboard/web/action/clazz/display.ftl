@@ -18,7 +18,7 @@
         <tr id="enrollment" class="dashboard" params="semester.id:${Parameters["semester.id"]};from:31;to:60;title:31～60人"></tr>
         <tr id="enrollment" class="dashboard" params="semester.id:${Parameters["semester.id"]};from:61;to:100;title:61～100人"></tr>
         <tr id="enrollment" class="dashboard" params="semester.id:${Parameters["semester.id"]};from:101;to:150;title:101～150人"></tr>
-        <tr id="enrollment" class="dashboard" params="semester.id:${Parameters["semester.id"]};from:150;title:150人以上"></tr>
+        <tr id="enrollment" class="dashboard" params="semester.id:${Parameters["semester.id"]};from:151;title:151人以上"></tr>
       </tbody>
     </table>
     <div id="enrollment" class="dashboard" method="items:max(enrollment.actual),min(enrollment.actual)" params="semester.id:${Parameters["semester.id"]}"></div>

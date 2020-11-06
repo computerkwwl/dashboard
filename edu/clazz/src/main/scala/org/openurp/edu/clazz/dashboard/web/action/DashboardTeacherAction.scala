@@ -56,7 +56,6 @@ class DashboardTeacherAction extends RestfulAction[Teacher] with ProjectSupport 
     val query1 = OqlBuilder.from[ProfessionalTitle](classOf[ProfessionalTitle].getName, "pt")
     query1.where(s"exists (from ${classOf[Teacher].getName} t where t.title = pt and exists (from ${classOf[Clazz].getName} c where exists (from c.teachers ct where ct = t)))")
     val titles = entityDao.search(query1)
-    put("titles", titles)
     val titlesMap = Map[Int, ProfessionalTitle]()
     titles.foreach(title => titlesMap(title.id) = title)
     put("titlesMap", titlesMap)

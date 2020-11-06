@@ -38,7 +38,7 @@
                   </tr>
         [/#if]
         [#assign index = index + 1/]
-        [#if index == count || !title_has_next]
+        [#if index == count || index lt count && !title_has_next]
                 </tbody>
               </table>
             </div>

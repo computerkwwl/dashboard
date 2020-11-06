@@ -1,5 +1,5 @@
 [#if (Parameters.display!"") == "pie"]
-  <div id="container_take_type" style="float:left;width:50%;height:400px">1</div>
+  <div id="container_take_type" style="float:left;width:50%;height:400px"></div>
   <script type="text/javascript">
     require(["echarts"],function(echarts) {
      console.log({ "take_type-echarts": echarts });
